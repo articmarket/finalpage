@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARTIC MARKET Registration</title>
+    <title>ARTIC MARKET Registration - Success</title>
     
     <!-- Original Fonts Preserved -->
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <!-- Premium App Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- DM Sans strictly for Form -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,38 +33,10 @@
         .font-heading-new { font-family: 'Outfit', sans-serif; } 
         .font-body-new { font-family: 'Plus Jakarta Sans', sans-serif; } 
 
-        /* Smooth Page Transitions */
-        .page-transition {
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
-        }
-
-        .hidden-page {
-            opacity: 0;
-            transform: translateY(15px) scale(0.99);
-            pointer-events: none;
-            visibility: hidden;
-            z-index: 0;
-        }
-
-        .visible-page {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
-            visibility: visible;
-            z-index: 10;
-        }
-
         .texture {
             background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
             opacity: 0.15;
             mix-blend-mode: overlay;
-        }
-
-        /* Autofill fix */
-        input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
-            -webkit-box-shadow: 0 0 0 50px transparent inset !important;
-            transition: background-color 5000s ease-in-out 0s !important;
-            font-family: 'DM Sans', sans-serif;
         }
 
         @keyframes pulseGlow {
@@ -79,89 +49,12 @@
             animation: pulseGlow 2s infinite;
         }
 
-        /* Form Native Overrides */
-        :root {
-            --green: #16a34a;
-            --green-light: #22c55e;
-            --yellow: #facc15;
-            --white: #ffffff;
-            --ink: #0f1a0d;
-        }
-
-        .field { position: relative; width: 100%; opacity: 0; } 
-        
-        .field-inner {
-            position: relative; height: 68px; background: #f8faf8; border-radius: 16px; border: 1.5px solid #e5e9e5;
-            display: flex; align-items: center; overflow: hidden; transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; cursor: text;
-        }
-        .field-inner:focus-within { border-color: var(--green-light); background: #fff; box-shadow: 0 0 0 4px rgba(34,197,94,0.1); }
-
-        .field-icon { width: 52px; height: 100%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .field-icon svg { color: #9ca3af; transition: color 0.2s; }
-        .field-inner:focus-within .field-icon svg { color: var(--green); }
-
-        .field-phone-prefix {
-            display: flex; align-items: center; gap: 6px; padding: 0 14px 0 18px; height: 100%;
-            border-right: 1.5px solid #e5e9e5; flex-shrink: 0; transition: border-color 0.2s;
-        }
-        .field-inner:focus-within .field-phone-prefix { border-color: #c8e6c9; }
-        .field-phone-prefix img { width: 20px; height: auto; border-radius: 2px; }
-        .field-phone-prefix span { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: 0.02em; font-family: 'DM Sans', sans-serif;}
-
-        .field-content { flex: 1; position: relative; height: 100%; display: flex; align-items: flex-end; overflow: hidden; }
-
-        label.float-label {
-            position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 14px; font-weight: 500;
-            color: #9ca3af; pointer-events: none; transition: top 0.2s, font-size 0.2s, color 0.2s, transform 0.2s;
-            transform-origin: left center; z-index: 2; letter-spacing: 0.01em; font-family: 'DM Sans', sans-serif;
-        }
-        
-        .field-content.filled label.float-label,
-        .field-inner:focus-within .field-content label.float-label {
-            top: 14px; font-size: 10.5px; color: var(--green); transform: translateY(0); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-        }
-        .field-content label.float-label.phone { left: 14px; }
-
-        input.field-input {
-            position: absolute; bottom: 0; left: 0; right: 0; height: 42px; background: transparent; border: none; outline: none;
-            padding: 0 16px 8px 16px; font-size: 15.5px; font-weight: 600; color: var(--ink); font-family: 'DM Sans', sans-serif;
-            letter-spacing: 0.01em; z-index: 1; width: 100%;
-        }
-        input.field-input.phone { padding: 0 14px 8px 14px; }
-
-        .field-check {
-            position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;
-            border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.2s; flex-shrink: 0;
-        }
-        .field-check.visible { opacity: 1; }
-        .field-check svg { color: white; }
-
-        .submit-btn {
-            width: 100%; height: 64px; background: var(--ink); color: var(--white); border: none; border-radius: 16px;
-            font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0.03em; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.25s ease;
-            opacity: 0; 
-        }
-        @media(min-width: 768px) { .submit-btn { height: 68px; font-size: 18px; } }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(15,26,13,0.4); }
-        .submit-btn:active { transform: scale(0.98); }
-        .submit-btn .btn-badge {
-            width: 24px; height: 24px; border-radius: 8px; background: var(--yellow);
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .submit-btn .btn-badge svg { color: var(--ink); width: 13px; height: 13px; }
-
-        .trust-row { display: flex; align-items: center; justify-content: center; margin-top: 20px; opacity: 0; }
-        .trust-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #9ca3af; font-weight: 600; font-family: 'DM Sans', sans-serif; }
-        .trust-item svg { color: var(--green-light); flex-shrink: 0; }
-
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
         /* =========================================
-           NEW END PAGE IMPORTED STYLES
+           END PAGE STYLES
            ========================================= */
         .location-badge {
             display: inline-flex;
@@ -200,29 +93,12 @@
             text-align: center;
             width: 100%;
         }
-        .offer-chip {
-            display: inline-block;
-            background: #facc15;
-            color: #0f1a0d;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.09em;
-            text-transform: uppercase;
-            padding: 6px 18px;
-            border-radius: 40px;
-            margin-bottom: 24px; /* Increased from 18px to optimize spacing */
-            box-shadow: 0 4px 14px rgba(250, 204, 21, 0.35);
-            font-family: 'Inter', sans-serif;
-        }
 
-        /* 
-           PRO-LEVEL DYNAMIC MARKER ANIMATION
-           Animates the dashoffset of a smooth vector curve
-        */
+        /* DYNAMIC MARKER ANIMATION */
         .marker-stroke {
             stroke-dasharray: 115;
             stroke-dashoffset: 115;
-            transition: stroke-dashoffset 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .active .marker-stroke {
             stroke-dashoffset: 0;
@@ -303,128 +179,8 @@
 
     <div class="relative z-10 grid w-full place-items-center min-h-[100dvh]">
         
-        <!-- ================= COVER PAGE ================= -->
-        <div id="page-cover" class="page-transition visible-page w-full h-full min-h-[100dvh] flex flex-col justify-center items-center py-12 px-6 sm:p-8 relative" style="grid-area: 1/1;">
-            
-            <div class="max-w-4xl w-full flex flex-col items-center justify-center mt-[-40px]">
-                
-                <div class="gsap-reveal backdrop-blur-md bg-white/10 border border-white/10 text-white text-[12px] md:text-[13px] font-bold px-5 py-[8px] rounded-full tracking-[0.15em] uppercase mb-8 shadow-2xl flex items-center justify-center gap-[8px]">
-                    <span class="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse"></span>
-                    Rajapalayam Only
-                </div>
-
-                <div class="mb-10 w-full text-center">
-                    <h1 class="font-heading-new text-[4rem] sm:text-7xl lg:text-[8rem] font-[900] tracking-tight leading-[0.9] mb-6 gsap-reveal">
-                        <span class="text-[#22c55e] drop-shadow-[0_0_20px_rgba(34,197,94,0.25)]">ARTIC</span> <br/>
-                        <span class="bg-gradient-to-r from-[#facc15] to-[#eab308] text-transparent bg-clip-text block mt-1 md:mt-3">MARKET</span>
-                    </h1>
-                    <p class="text-white/80 text-[18px] sm:text-2xl lg:text-3xl font-medium mt-6 leading-relaxed px-4 gsap-reveal max-w-[750px] mx-auto">
-                        Farm-fresh vegetables directly to your hands at pure <span class="text-[#22c55e] font-bold">wholesale prices.</span>
-                    </p>
-                </div>
-
-                <button onclick="showPage('page-form')" class="gsap-reveal group relative inline-flex items-center justify-center bg-[#22c55e] text-white px-10 md:px-14 py-4 md:py-[22px] rounded-full text-[17px] md:text-[19px] font-bold overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] active:scale-[0.97]">
-                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-[#16a34a] to-[#22c55e] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                    <span class="relative flex items-center gap-2 font-heading-new tracking-wide">
-                        Get VIP Access
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </button>
-            </div>
-        </div>
-
-        <!-- ================= FORM PAGE ================= -->
-        <div id="page-form" class="page-transition hidden-page w-full h-full min-h-[100dvh] flex flex-col justify-center items-center py-12 px-5 relative" style="grid-area: 1/1;">
-            
-            <div class="fixed top-5 left-5 sm:top-8 sm:left-8 z-[100] gsap-back-btn">
-                <button onclick="showPage('page-cover')" class="group flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-2xl transition-all hover:bg-white/20 active:scale-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 text-white transition-transform duration-300 group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-            </div>
-
-            <div class="w-full max-w-[520px] bg-white rounded-[32px] md:rounded-[40px] px-7 pt-12 pb-[48px] md:px-12 md:pt-[65px] md:pb-[53px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] flex flex-col relative gsap-card mx-auto">
-                
-                <div class="mb-[36px] w-full text-center">
-                    <h2 class="font-heading-new text-4xl md:text-[44px] font-black tracking-tight leading-none">
-                        <span class="text-[#22c55e]">ARTIC</span> <span class="text-[#facc15]">MARKET</span>
-                    </h2>
-                    <p class="text-gray-500 font-body-new text-[15px] font-medium mt-4 max-w-[320px] mx-auto">Secure your lifetime wholesale access code.</p>
-                </div>
-                
-                <form id="regForm" onsubmit="event.preventDefault(); showPage('page-ending')" class="w-full space-y-[18px]">
-                    
-                    <div class="field">
-                        <div class="field-inner">
-                            <div class="field-icon">
-                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            </div>
-                            <div class="field-content" id="fc-name">
-                                <label class="float-label" for="fname">FULL NAME</label>
-                                <input class="field-input" type="text" id="fname" required autocomplete="name" oninput="handleInput(this,'fc-name','chk-name')">
-                            </div>
-                            <div class="field-check" id="chk-name">
-                                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="field-inner">
-                            <div class="field-phone-prefix">
-                                <img src="https://flagcdn.com/in.svg" alt="India" loading="lazy">
-                                <span>+91</span>
-                            </div>
-                            <div class="field-content" id="fc-phone">
-                                <label class="float-label phone" for="fphone">MOBILE NUMBER</label>
-                                <input class="field-input phone" type="tel" id="fphone" required pattern="[0-9]{10}" maxlength="10" inputmode="numeric" oninput="handleInput(this,'fc-phone','chk-phone');this.value=this.value.replace(/\D/g,'')">
-                            </div>
-                            <div class="field-check" id="chk-phone">
-                                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="field-inner">
-                            <div class="field-icon">
-                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            </div>
-                            <div class="field-content" id="fc-place">
-                                <label class="float-label" for="fplace">CITY / TOWN</label>
-                                <input class="field-input" type="text" id="fplace" required autocomplete="address-level2" oninput="handleInput(this,'fc-place','chk-place')">
-                            </div>
-                            <div class="field-check" id="chk-place">
-                                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-8 w-full">
-                        <button type="submit" class="submit-btn" id="submitBtn">
-                            <span>Complete Registration</span>
-                            <div class="btn-badge">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
-                            </div>
-                        </button>
-                        
-                        <div class="trust-row">
-                            <div class="trust-item">
-                                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                                Bank-Grade Security
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
         <!-- ================= ENDING PAGE (Double Expand & Slide-Up Reveal) ================= -->
-        <div id="page-ending" class="page-transition hidden-page w-full h-full min-h-[100dvh] flex flex-col justify-center items-center py-12 px-5 relative" style="grid-area: 1/1;">
+        <div id="page-ending" class="w-full h-full min-h-[100dvh] flex flex-col justify-center items-center py-12 px-5 relative" style="grid-area: 1/1;">
             
             <div id="page-ending-card" class="w-full max-w-[520px] bg-white rounded-[32px] md:rounded-[40px] px-6 md:px-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] flex flex-col items-center relative mx-auto text-center overflow-hidden">
                 
@@ -443,15 +199,13 @@
                             </div>
                         </div>
 
-                        <!-- IMPROVED: Clean, standard professional punctuation -->
                         <h2 class="success-stagger font-heading-new text-[32px] md:text-[36px] font-black text-[#0f1a0d] mb-2 tracking-tight">
                             Thank <span class="text-[#22c55e]">You!</span>
                         </h2>
                         
-                        <!-- IMPROVED: Higher contrast charcoal font with refined semi-bold text for WCAG compliance -->
                         <p class="success-stagger text-slate-700 text-[15px] font-semibold mb-6">Your wholesale access is fully secured.</p>
 
-                        <!-- NEW DESIGN: Location Radar Badge -->
+                        <!-- Location Radar Badge -->
                         <div class="success-stagger location-badge mb-2">
                             <span class="loc-dot"></span>
                             Rajapalayam — Location Soon
@@ -463,17 +217,16 @@
                 <!-- BOTTOM SECTION (Second Accordion Wrapper) -->
                 <div id="reward-wrapper" class="w-full overflow-hidden" style="height: 0; opacity: 0;">
                     
-                    <!-- Inner Slide-Down Content (Padding expanded from pb-10 to pb-12/16 to optimize bottom fold breathing room) -->
+                    <!-- Inner Slide-Down Content -->
                     <div id="reward-inner" class="w-full pt-[0.2rem] pb-12 md:pb-16 flex flex-col items-center">
                         
-                        <!-- NEW DESIGN: Referral Card -->
+                        <!-- Referral Card -->
                         <div class="referral-card">
-                            <div class="offer-chip">Limited Time Offer</div>
-                            <!-- 
-                               UPGRADED & ACCESSIBILITY OPTIMIZED:
-                               High visibility stroke path (rgba(253, 224, 71, 0.9)) adds dramatic emphasis while preserving dark text contrast.
-                            -->
-                            <h3 class="text-xl sm:text-2xl font-black text-[#0f1a0d] mb-3 font-heading-new inline-block relative">
+                            
+                            <!-- Bouncing Gift Box -->
+                            <div class="text-5xl animate-bounce mb-3">🎁</div>
+
+                            <h3 class="text-[1.55rem] font-black text-[#0f1a0d] mb-3 font-heading-new inline-block relative">
                                 <span id="highlight-trigger" class="relative inline-block px-2">
                                     <span class="relative z-10">Unlock Extra <span class="text-[#22c55e]">10% OFF</span></span>
                                     <svg class="absolute inset-x-0 bottom-[2px] h-[65%] w-[104%] -left-[2%] z-0 pointer-events-none" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -485,7 +238,7 @@
                                 Share with <span class="text-[#22c55e] font-bold">10 friends & family</span> in Rajapalayam to unlock an exclusive discount.
                             </p>
 
-                            <!-- NEW DESIGN: WhatsApp Pulse Button -->
+                            <!-- WhatsApp Pulse Button -->
                             <button onclick="share()" class="whatsapp-btn">
                                 <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                                     <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
@@ -494,8 +247,7 @@
                             </button>
                         </div>
 
-                        <!-- IMPROVED: Muted yet visible text-slate-500 skip link with spacious margin (mt-7) and enhanced transition -->
-                        <a href="https://articmarket.com" class="text-slate-500 hover:text-slate-800 text-[12px] font-bold transition-all uppercase tracking-[0.06em] flex items-center justify-center gap-1.5 mt-7">
+                        <a href="https://articmarket.com" class="text-slate-600 hover:text-slate-800 hover:underline text-[12px] font-bold transition-all uppercase tracking-[0.06em] flex items-center justify-center gap-1.5 mt-7">
                             Skip to website
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -510,123 +262,52 @@
     </div>
 
     <script>
-        // Form Logic
-        function handleInput(input, fcId, chkId) {
-            const fc = document.getElementById(fcId);
-            const chk = document.getElementById(chkId);
-            
-            if (input.value.trim().length > 0) {
-                fc.classList.add('filled');
-                const valid = input.type === 'tel' ? /^[0-9]{10}$/.test(input.value) : input.value.trim().length >= 2;
-                chk.classList.toggle('visible', valid);
-            } else {
-                fc.classList.remove('filled');
-                chk.classList.remove('visible');
-            }
-        }
-
-        // Init App Animation
+        // Init App Animation Directly on Page Load
         window.addEventListener('DOMContentLoaded', () => {
-            gsap.fromTo("#page-cover .gsap-reveal", 
-                { opacity: 0, y: 30 }, 
-                { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out", delay: 0.2 }
-            );
-        });
-
-        // Router
-        function showPage(pageId) {
-            document.querySelectorAll('.page-transition').forEach(el => {
-                el.classList.remove('visible-page');
-                el.classList.add('hidden-page');
-            });
             
-            const target = document.getElementById(pageId);
-            target.classList.remove('hidden-page');
-            target.classList.add('visible-page');
+            // Set Initial States for the Double Expand & Reveal Effect
+            gsap.set("#page-ending-card", { opacity: 0, y: 30 }); // Overall wrapper moves up slightly
+            gsap.set("#success-wrapper", { height: 0, opacity: 0 }); // First accordion starts collapsed
+            gsap.set("#success-inner", { y: 40 }); // Text starts pushed down (for Slide-Up Reveal)
+            
+            gsap.set("#checkmark-circle", { scale: 0 });
+            gsap.set("#checkmark-tick", { strokeDasharray: 24, strokeDashoffset: 24 });
+            gsap.set(".success-stagger", { opacity: 0, y: 15 });
+            
+            gsap.set("#reward-wrapper", { height: 0, opacity: 0 }); // Second accordion starts collapsed
+            gsap.set("#reward-inner", { y: -50 }); // Elements start pushed up (for Parallax Slide Down)
+            
+            document.getElementById('highlight-trigger').classList.remove('active');
 
-            if (pageId === 'page-cover') {
-                gsap.fromTo("#page-cover .gsap-reveal", 
-                    { opacity: 0, y: 20 }, 
-                    { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.1 }
-                );
-            }
+            const tl = gsap.timeline();
 
-            if (pageId === 'page-form') {
-                gsap.fromTo("#page-form .gsap-card", 
-                    { opacity: 0, y: 40, scale: 0.96 }, 
-                    { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out", delay: 0.1 }
-                );
-                
-                gsap.fromTo(".field", 
-                    { opacity: 0, x: -16 }, 
-                    { opacity: 1, x: 0, duration: 0.5, stagger: 0.08, ease: "power2.out", delay: 0.3, clearProps: "transform" }
-                );
-
-                gsap.fromTo(".submit-btn", 
-                    { opacity: 0, y: 16 }, 
-                    { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", delay: 0.55, clearProps: "transform" }
-                );
-
-                gsap.fromTo(".trust-row", 
-                    { opacity: 0 }, 
-                    { opacity: 1, duration: 0.5, ease: "power2.out", delay: 0.65 }
-                );
-                
-                gsap.fromTo(".gsap-back-btn", 
-                    { opacity: 0, scale: 0.5, x: -10, rotation: -20 }, 
-                    { opacity: 1, scale: 1, x: 0, rotation: 0, duration: 0.8, ease: "back.out(1.5)", delay: 0.4 }
-                );
-            }
-
-            if (pageId === 'page-ending') {
-                // Completely reset all states for the Double Expand & Reveal Effect
-                gsap.killTweensOf(["#page-ending-card", "#success-wrapper", "#success-inner", "#checkmark-circle", "#checkmark-tick", ".success-stagger", "#reward-wrapper", "#reward-inner"]);
-                
-                // Card & Wrapper initial states
-                gsap.set("#page-ending-card", { opacity: 0, y: 30 }); // Overall wrapper moves up slightly
-                gsap.set("#success-wrapper", { height: 0, opacity: 0 }); // First accordion starts collapsed
-                gsap.set("#success-inner", { y: 40 }); // Text starts pushed down (for Slide-Up Reveal)
-                
-                gsap.set("#checkmark-circle", { scale: 0 });
-                gsap.set("#checkmark-tick", { strokeDasharray: 24, strokeDashoffset: 24 });
-                gsap.set(".success-stagger", { opacity: 0, y: 15 });
-                
-                gsap.set("#reward-wrapper", { height: 0, opacity: 0 }); // Second accordion starts collapsed
-                gsap.set("#reward-inner", { y: -50 }); // Elements start pushed up (for Parallax Slide Down)
-                
-                // Reset SVG highlighter sweep state on launch
-                document.getElementById('highlight-trigger').classList.remove('active');
-
-                const tl = gsap.timeline();
-
-                // Phase 1: Card appears and FIRST accordion expands (Slide-Up Reveal)
-                tl.to("#page-ending-card", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", delay: 0.1 })
-                  .to("#success-wrapper", { height: "auto", opacity: 1, duration: 1.0, ease: "power4.inOut" }, "<")
-                  .to("#success-inner", { y: 0, duration: 1.0, ease: "power4.out" }, "<0.1") // Slide up inner content inside the expanding wrapper
-                  
-                  // Pop checkmark & text stagger alongside the reveal
-                  .to("#checkmark-circle", { scale: 1, duration: 0.5, ease: "back.out(1.6)" }, "-=0.3")
-                  .to("#checkmark-tick", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" })
-                  .add(() => {
-                      confetti({ particleCount: 130, spread: 80, origin: { y: 0.5 }, colors: ['#22c55e', '#facc15', '#16a34a'] });
-                  }, "-=0.1")
-                  .to(".success-stagger", { opacity: 1, y: 0, duration: 0.45, stagger: 0.1, ease: "power2.out" }, "-=0.1")
-                  
-                  // Build suspense while user reads "Thank You"
-                  .to({}, { duration: 1.0 }) 
-                  .addLabel("showReward")
-                  
-                  // Phase 2: SECOND accordion expands smoothly down
-                  .to("#reward-wrapper", { height: "auto", duration: 1.4, ease: "power4.inOut" }, "showReward")
-                  .to("#reward-inner", { y: 0, duration: 1.4, ease: "power4.inOut" }, "showReward")
-                  .to("#reward-wrapper", { opacity: 1, duration: 1.0, ease: "power2.out" }, "showReward+=0.4")
-                  
-                  // Phase 3: Trigger the premium yellow marker sweep right as the card slides down and settles
-                  .add(() => {
-                      document.getElementById('highlight-trigger').classList.add('active');
-                  }, "showReward+=1.2");
-            }
-        }
+            // Phase 1: Card appears and FIRST accordion expands (Slide-Up Reveal)
+            tl.to("#page-ending-card", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out", delay: 0.3 })
+              .to("#success-wrapper", { height: "auto", opacity: 1, duration: 1.0, ease: "power4.inOut" }, "<")
+              .to("#success-inner", { y: 0, duration: 1.0, ease: "power4.out" }, "<0.1") 
+              
+              // Pop checkmark & text stagger alongside the reveal
+              .to("#checkmark-circle", { scale: 1, duration: 0.5, ease: "back.out(1.6)" }, "-=0.3")
+              .to("#checkmark-tick", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" })
+              .add(() => {
+                  confetti({ particleCount: 130, spread: 80, origin: { y: 0.45, x: 0.5 }, colors: ['#22c55e', '#facc15', '#16a34a'] });
+              }, "-=0.1")
+              .to(".success-stagger", { opacity: 1, y: 0, duration: 0.45, stagger: 0.1, ease: "power2.out" }, "-=0.1")
+              
+              // Build suspense while user reads "Thank You"
+              .to({}, { duration: 1.0 }) 
+              .addLabel("showReward")
+              
+              // Phase 2: SECOND accordion expands smoothly down
+              .to("#reward-wrapper", { height: "auto", duration: 1.4, ease: "power4.inOut" }, "showReward")
+              .to("#reward-inner", { y: 0, duration: 1.4, ease: "power4.inOut" }, "showReward")
+              .to("#reward-wrapper", { opacity: 1, duration: 1.0, ease: "power2.out" }, "showReward+=0.4")
+              
+              // Phase 3: Trigger the premium yellow marker sweep right as the card slides down and settles
+              .add(() => {
+                  document.getElementById('highlight-trigger').classList.add('active');
+              }, "showReward+=1.2");
+        });
 
         // Share Link logic
         function share() {
@@ -636,4 +317,4 @@
         }
     </script>
 </body>
-</html>FINAL
+</html>s
