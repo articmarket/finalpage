@@ -49,11 +49,11 @@
 
     html, body {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
       background-color: #0a1009;
       color: var(--color-text-white);
       font-family: var(--font-body);
-      overflow: hidden;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -93,7 +93,7 @@
     .viewport-container {
       position: relative;
       width: 100%;
-      height: 100%;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -435,7 +435,7 @@
     @media (max-width: 767px) {
       .viewport-container {
         padding: 20px 20px 28px 20px !important;
-        height: 100dvh !important;
+        min-height: 100dvh !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
@@ -445,8 +445,9 @@
       .location-label {
         position: absolute !important;
         top: 24px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
+        right: 10px !important;
+        left: auto !important;
+        transform: none !important;
         margin-bottom: 0 !important;
         z-index: 30;
         gap: 0.75rem !important;
@@ -470,7 +471,8 @@
 
       .hero-container {
         width: 100% !important;
-        height: 100% !important;
+        min-height: 100% !important;
+        flex: 1 !important;
         max-width: 100% !important;
         display: flex !important;
         flex-direction: column !important;
@@ -568,6 +570,7 @@
       /* Scale down Location Badge */
       .location-label {
         top: 18px !important;
+        right: 16px !important;
         font-size: 0.65rem !important;
         padding: 0.4rem 0.8rem !important;
         gap: 0.4rem !important;
@@ -882,4 +885,4 @@
     });
   </script>
 </body>
-</html>
+</html>s
