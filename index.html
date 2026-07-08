@@ -213,16 +213,18 @@
       .hero-subtext { font-size: 24px; }
     }
 
-    /* Base Button Layout */
+    /* --------------------------------------------------
+       5. Base Button Layout (Award-Winning Style)
+       -------------------------------------------------- */
     .cta-btn {
       position: relative;
       overflow: hidden;
       display: inline-flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.25rem;
       background-color: #ffffff;
       color: #0c0c0c;
-      padding: 1rem 2.25rem;
+      padding: 0.65rem 0.65rem 0.65rem 2.25rem;
       border-radius: 9999px;
       font-size: 0.95rem;
       font-weight: 700;
@@ -231,33 +233,95 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      transition: all 0.30s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       opacity: 0;
       will-change: transform, opacity;
       margin-top: 6px;
       margin-bottom: -6px;
+      /* The psychological attractive pulse */
+      animation: buttonPulse 3s infinite cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .cta-btn .btn-icon {
-      display: inline-block;
-      transition: transform 0.30s cubic-bezier(0.16, 1, 0.3, 1);
+    @keyframes buttonPulse {
+      0% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(255, 255, 255, 0.4); }
+      70% { box-shadow: 0 15px 35px rgba(255, 255, 255, 0.15), 0 0 0 14px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(255, 255, 255, 0); }
     }
 
     .cta-btn:hover {
       transform: scale(1.04);
-      box-shadow: 0 15px 35px rgba(255, 255, 255, 0.12);
-    }
-
-    .cta-btn:hover .btn-icon {
-      transform: translate(0.125rem, -0.125rem);
+      /* Enhances glow & stops pulse visually on hover for control */
+      box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25), 0 0 0 6px rgba(255, 255, 255, 0.1) !important;
+      animation-play-state: paused;
     }
 
     .cta-btn:active {
       transform: scale(0.98);
     }
 
+    /* Shiny Sweep Across the Button */
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.08) 50%,
+        transparent 100%
+      );
+      transform: skewX(-20deg);
+      transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 0;
+    }
+    
+    .cta-btn:hover::before {
+      left: 150%;
+    }
+
+    .btn-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Award-Winning Arrow Icon Animation Container */
+    .arrow-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: #0c0c0c;
+      color: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Default back-and-forth attention animation */
+    .arrow-1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: arrowBounce 1.2s infinite ease-in-out;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% {
+        transform: translateX(-3px);
+      }
+      50% {
+        transform: translateX(3px);
+      }
+    }
+
     /* --------------------------------------------------
-       5. Social Proof Section
+       6. Social Proof Section
        -------------------------------------------------- */
     .social-proof {
       display: flex;
@@ -319,7 +383,7 @@
     }
 
     /* --------------------------------------------------
-       6. Premium Glowing Highlighter Pill, Float & Shimmer
+       7. Premium Glowing Highlighter Pill, Float & Shimmer
        -------------------------------------------------- */
     .highlighter-pill {
       position: relative;
@@ -328,9 +392,9 @@
       align-items: center;
       justify-content: center;
       animation: floatPill 5s ease-in-out infinite; 
-      width: 105px; /* Fixed width prevents resizing & layout shifts */
-      flex-shrink: 0; /* Prevents container from squeezing */
-      font-variant-numeric: tabular-nums; /* Prevents dynamic micro-jittering during counters */
+      width: 105px; 
+      flex-shrink: 0; 
+      font-variant-numeric: tabular-nums; 
     }
 
     @keyframes floatPill {
@@ -366,7 +430,7 @@
     }
 
     /* --------------------------------------------------
-       7. Mobile Layout & Position Adaptations
+       8. Mobile Layout & Position Adaptations
        -------------------------------------------------- */
     @media (max-width: 767px) {
       .viewport-container {
@@ -378,7 +442,6 @@
         align-items: center !important;
       }
 
-      /* Mobile-only Absolute Position & Capsule Override for Location label */
       .location-label {
         position: absolute !important;
         top: 24px !important;
@@ -386,8 +449,6 @@
         transform: translateX(-50%) !important;
         margin-bottom: 0 !important;
         z-index: 30;
-        
-        /* Mobile visual styling properties match reference mockup */
         gap: 0.75rem !important;
         font-size: 0.8rem !important;
         font-weight: 800 !important;
@@ -407,7 +468,6 @@
         box-shadow: 0 0 10px var(--accent-green) !important;
       }
 
-      /* Centered area elements wrapper positioning */
       .hero-container {
         width: 100% !important;
         height: 100% !important;
@@ -419,7 +479,6 @@
         padding-top: 50px !important; 
       }
 
-      /* Stacked mobile typography spacing */
       .hero-title {
         display: flex;
         flex-direction: column;
@@ -438,7 +497,6 @@
         padding-right: 0.5rem !important;
       }
 
-      /* Mobile layout transformation for Social Proof component using grid contents */
       .social-proof {
         display: grid !important;
         grid-template-columns: auto auto !important;
@@ -456,7 +514,7 @@
       }
 
       .social-text {
-        display: contents !important; /* Exposes highlighter-pill and label directly to the grid container */
+        display: contents !important; 
       }
 
       .highlighter-pill {
@@ -484,9 +542,82 @@
         width: 100% !important;
         display: flex !important;
         justify-content: center !important;
-        padding: 1.1rem 2rem !important;
+        padding: 0.75rem 0.75rem 0.75rem 1.75rem !important;
         margin-top: auto !important;
         margin-bottom: 0 !important;
+      }
+    }
+
+    /* --------------------------------------------------
+       9. Extra Small Screens Override (Below 370px)
+       -------------------------------------------------- */
+    @media (max-width: 370px) {
+      /* Reposition/scale top logo to prevent collision */
+      .logo-anim {
+        top: 16px !important;
+        left: 16px !important;
+      }
+      .logo-anim > div {
+        width: 36px !important;
+        height: 36px !important;
+      }
+      .logo-anim span {
+        font-size: 18px !important;
+      }
+
+      /* Scale down Location Badge */
+      .location-label {
+        top: 18px !important;
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.8rem !important;
+        gap: 0.4rem !important;
+      }
+      .pulse-dot {
+        width: 6px !important;
+        height: 6px !important;
+      }
+
+      /* Reduce Hero Title specifically so it fits without horizontal scrolling */
+      .hero-title {
+        font-size: 3.7rem !important;
+      }
+
+      /* Adjust Subtext */
+      .hero-subtext {
+        font-size: 14px !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      /* Condense Social Proof layout */
+      .social-proof {
+        column-gap: 6px !important;
+      }
+      .avatar {
+        width: 32px !important;
+        height: 32px !important;
+      }
+      .highlighter-pill {
+        width: 80px !important;
+        height: 30px !important;
+        font-size: 1rem !important;
+      }
+      .registered-label {
+        font-size: 0.65rem !important;
+      }
+
+      /* Squeeze CTA Button to safely fit edges */
+      .cta-btn {
+        padding: 0.5rem 0.5rem 0.5rem 1.25rem !important;
+        font-size: 0.8rem !important;
+        gap: 0.75rem !important;
+      }
+      .arrow-wrapper {
+        width: 36px !important;
+        height: 36px !important;
+      }
+      .arrow-1 svg {
+        width: 14px !important;
+        height: 14px !important;
       }
     }
   </style>
@@ -513,7 +644,7 @@
     <!-- Centered Editorial Registration Experience -->
     <main class="hero-container">
       
-      <!-- Location Element with Blinking Radar Dot (HTML preserved from original) -->
+      <!-- Location Element with Blinking Radar Dot -->
       <div class="location-label flex items-center justify-center gap-[1.5rem] text-[1.19rem] font-bold tracking-[0.35em] uppercase mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
         <div class="pulse-dot">
           <div class="pulse-ring"></div>
@@ -521,16 +652,13 @@
         Rajapalayam
       </div>
 
-      <!-- Center Group Wrapper: groups core content together beautifully on mobile -->
+      <!-- Center Group Wrapper -->
       <div class="flex flex-col items-center justify-center flex-grow md:flex-grow-0 my-auto w-full">
         <div class="title-wrapper">
           <h1 class="hero-title flex flex-col items-center">
-            <!-- Line 1: "Artic" - Stacked Above and wrapped inside single overflow mask -->
             <span class="line-mask block">
               <span class="line-element block artic">Artic</span>
             </span>
-            
-            <!-- Line 2: "Market" - Stacked Below and wrapped inside single overflow mask -->
             <span class="line-mask block">
               <span class="line-element block market">Market</span>
             </span>
@@ -545,19 +673,16 @@
         <!-- Solid Social Proof / Counter Widget -->
         <div class="social-proof">
           <div class="avatar-group">
-            <!-- Icon 1 -->
             <div class="avatar avatar-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
               </svg>
             </div>
-            <!-- Icon 2 -->
             <div class="avatar avatar-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
               </svg>
             </div>
-            <!-- Icon 3 -->
             <div class="avatar avatar-3">
               <span>+</span>
             </div>
@@ -572,13 +697,16 @@
         </div>
       </div>
 
-      <!-- Button Element -->
-      <button class="cta-btn group relative overflow-hidden inline-flex items-center gap-4 bg-white text-[#0C0C0C] hover:scale-[1.04] active:scale-[0.98] px-9 py-4 rounded-full text-[0.95rem] font-bold tracking-wider uppercase transition-all duration-300 ease-out shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_35px_rgba(255,255,255,0.12)]">
-        <span>Register Now</span>
-        <span class="btn-icon transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M1.5 10.5L10.5 1.5M10.5 1.5H3.5M10.5 1.5V8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <!-- Award Winning CTA Button -->
+      <button class="cta-btn">
+        <span class="btn-text">Register Now</span>
+        <span class="arrow-wrapper">
+          <span class="arrow-1">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </span>
         </span>
       </button>
 
@@ -592,20 +720,18 @@
 
       const tl = gsap.timeline();
 
-      // Configure Initial States (Hiding elements to ensure clean entrance without flicker)
-      
       // Background Image Initial Zoom & Darkness
       gsap.set('#bg-image', { 
         scale: 1.35, 
         filter: 'brightness(0.15) contrast(1.4)' 
       });
 
-      // Split-Line Elements Initial State: Offset 105% vertically inside `.line-mask`
+      // Split-Line Elements Initial State
       gsap.set('.line-element', { 
         y: "105%" 
       });
 
-      // Logo Reveal starting states (Outer circle drops, inside "A" scales inside)
+      // Logo Reveal starting states
       gsap.set('.logo-anim', {
         opacity: 0,
         y: -150,
@@ -623,9 +749,9 @@
         y: 30 
       });
 
-      // Social Proof Component Subsections - Initial states preset for staggered reveal
+      // Social Proof Component
       gsap.set('.social-proof', { 
-        opacity: 1 // Container immediately ready, inner nodes will selectively render
+        opacity: 1 
       });
       gsap.set('.avatar', { 
         opacity: 0, 
@@ -652,13 +778,13 @@
         y: 35 
       });
 
-      // 1. Top-Left Logo Swoop-Down Reveal (Multi-layered Animation)
+      // 1. Top-Left Logo Swoop-Down Reveal
       tl.to('.logo-anim', {
         opacity: 1,
         y: 0,
         scale: 1,
         rotate: 0,
-        duration: 2.0, // High-end decelerating drop length
+        duration: 2.0,
         ease: 'expo.out'
       }, '+=0.1');
 
@@ -667,7 +793,7 @@
         scale: 1,
         duration: 1.4,
         ease: 'power4.out'
-      }, '-=1.7'); // Overlaps during descent
+      }, '-=1.7');
 
       // 2. Location Label Reveal
       tl.fromTo('.location-label', {
@@ -680,7 +806,7 @@
         ease: 'power4.out'
       }, '-=1.2');
 
-      // 3. Split-Line Reveal Animation (Smoother & Slower)
+      // 3. Split-Line Reveal Animation
       tl.to('.line-element', {
         y: "0%",
         duration: 1.9,       
@@ -696,11 +822,9 @@
         ease: 'power3.out'
       }, '-=1.4');
 
-      // Define a unified anchor label for the social proof section to synchronize relative components
       tl.addLabel('socialReveal', '-=1.2');
 
       // 5. Social Proof Entrance Reveal
-      // Step 5a: Elastic staggered popping of the user avatars
       tl.to('.avatar', {
         opacity: 1,
         scale: 1,
@@ -711,7 +835,6 @@
         ease: 'back.out(1.8)'
       }, 'socialReveal');
 
-      // Step 5b: 3D flip-pop of the Highlighter Pill (starts 0.4s into avatars popping)
       tl.to('.highlighter-pill', {
         opacity: 1,
         scale: 1,
@@ -721,7 +844,6 @@
         ease: 'back.out(2.0)'
       }, 'socialReveal+=0.4');
 
-      // Step 5c: Elegant sliding reveal of the 'People Registered' text
       tl.to('.registered-label', {
         opacity: 1,
         x: 0,
@@ -729,7 +851,7 @@
         ease: 'power4.out'
       }, 'socialReveal+=0.4');
 
-      // 6. Smooth Cinematic Number Counter (starts AT THE SAME FRAME the pill begins to reveal)
+      // 6. Smooth Cinematic Number Counter
       const countObj = { val: 0 };
       tl.to(countObj, {
         val: 2000, 
