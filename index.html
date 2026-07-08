@@ -378,7 +378,7 @@
     .social-text {
       font-family: var(--font-body);
       font-size: 1.0rem;
-      color: var(--color-text-muted);
+      color: rgb(255 255 255);
       letter-spacing: 0.05em;
     }
 
@@ -522,8 +522,8 @@
         grid-row: 1 !important;
         margin: 0 !important;
         width: 95px !important;
-        height: 34px !important;
-        font-size: 1.15rem !important;
+        height: 37px !important;
+        font-size: 1.3rem !important;
       }
 
       .registered-label {
@@ -534,7 +534,7 @@
         font-size: 0.75rem !important;
         letter-spacing: 0.15em !important;
         font-weight: 700 !important;
-        color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(255, 255, 255, 0.8) !important;
       }
 
       /* Mobile Call-To-Action Button stretching */
@@ -598,8 +598,8 @@
       }
       .highlighter-pill {
         width: 80px !important;
-        height: 30px !important;
-        font-size: 1rem !important;
+        height: 33px !important;
+        font-size: 1.15rem !important;
       }
       .registered-label {
         font-size: 0.65rem !important;
@@ -692,7 +692,7 @@
             <span class="highlighter-pill inline-flex items-center justify-center py-0.5 mx-1.5 rounded-full bg-[#F4C542] text-[#0C0C0C] font-display font-extrabold text-[1.4rem] tracking-normal shadow-[0_0_20px_rgba(244,197,66,0.35)]">
               <span id="registered-count">0</span>
             </span>
-            <span class="registered-label inline-block">People Registered</span>
+            <span class="registered-label inline-block">People've Registered</span>
           </p>
         </div>
       </div>
@@ -854,11 +854,11 @@
       // 6. Smooth Cinematic Number Counter
       const countObj = { val: 0 };
       tl.to(countObj, {
-        val: 2000, 
+        val: 2564, 
         duration: 2.2, 
         ease: "power3.out",
         onUpdate: function() {
-          document.getElementById('registered-count').innerText = Math.round(countObj.val).toLocaleString() + "+";
+          document.getElementById('registered-count').innerText = Math.round(countObj.val).toLocaleString();
         }
       }, 'socialReveal+=0.4');
 
