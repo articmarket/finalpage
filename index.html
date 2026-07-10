@@ -19,6 +19,10 @@
         extend: {
           fontFamily: {
             headingNew: ['Outfit', 'sans-serif'],
+            bodyNew: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          screens: {
+            'xs': '360px',
           }
         }
       }
@@ -408,7 +412,7 @@
     .trust-item svg { color: var(--green-light); flex-shrink: 0; }
 
     /* =========================================
-       5. Success Page Styles
+       5. Success Page & Registered Pages Styles
        ========================================= */
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
@@ -416,6 +420,12 @@
       100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
     .pulse-ring-form { animation: pulseGlow 2s infinite; }
+    .pulse-ring-yellow { animation: pulseGlowYellow 2s infinite; }
+    @keyframes pulseGlowYellow {
+      0% { box-shadow: 0 0 0 0 rgba(244, 197, 66, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(244, 197, 66, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(244, 197, 66, 0); }
+    }
 
     .location-badge {
       display: inline-flex; align-items: center; gap: 8px; background: #f8faf8; border: 1px solid #e2e8f0;
@@ -424,7 +434,7 @@
     }
     @media(min-width: 640px) { .location-badge { gap: 10px; padding: 10px 22px; font-size: 13.5px; } }
 
-    .location-badge .loc-dot { width: 9px; height: 9px; border-radius: 50%; background: #22c55e; animation: dotPulse 2s infinite; }
+    .location-badge .loc-dot { width: 9px; height: 9px; border-radius: 50%; background: #22c55e; animation: dotPulse 2s infinite; flex-shrink: 0;}
     @keyframes dotPulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
       50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
@@ -467,6 +477,13 @@
     .whatsapp-btn:active { transform: translateY(2px); box-shadow: 0 4px 10px rgba(0, 215, 87, 0.4) !important; }
     .whatsapp-icon { width: 18px; height: 18px; fill: white; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); flex-shrink: 0; }
     @media(min-width: 640px) { .whatsapp-icon { width: 22px; height: 22px; } }
+
+    /* Already Registered Specific Utilities */
+    .stagger-el { opacity: 0; transform: translateY(15px); }
+    
+    @media (max-height: 650px) {
+      .responsive-padding { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+    }
 
     /* Short Mobile Screens (<720px height) FIX */
     @media (max-height: 720px) and (max-width: 639px) {
@@ -748,9 +765,89 @@
         </div>
     </div>
 
+    <!-- ================= PAGE 4: ALREADY REGISTERED PAGE ================= -->
+    <div id="page-already-registered" class="page-transition hidden-page w-full h-full min-h-[100dvh] grid place-items-center py-10 px-4 sm:px-6 md:px-8 overflow-y-auto responsive-padding relative" style="grid-area: 1/1;">
+      
+        <!-- Already Registered UI Card -->
+        <div id="already-registered-card" class="w-full max-w-[500px] bg-white rounded-[28px] sm:rounded-[32px] md:rounded-[40px] p-6 xs:p-7 sm:p-8 md:p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] flex flex-col items-center text-center my-auto relative overflow-hidden" style="opacity: 0; transform: translateY(40px) scale(0.96);">
+            
+            <!-- Animated Icon Badge -->
+            <div class="relative mb-5 sm:mb-6">
+                <div class="absolute inset-0 rounded-full border-[2.5px] border-[#facc15] pulse-ring-yellow"></div>
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#facc15] to-[#eab308] rounded-full flex items-center justify-center shadow-[0_10px_25px_rgba(250,204,21,0.35)] relative z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 sm:h-10 sm:w-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <polyline points="16 11 18 13 22 9"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Headings -->
+            <h2 class="stagger-el font-headingNew text-[26px] xs:text-[28px] sm:text-[32px] md:text-[36px] font-black text-[#0f1a0d] mb-5 sm:mb-6 leading-tight tracking-tight">
+                You've already <br/><span class="text-[#eab308]">Registered!</span>
+            </h2>
+
+            <!-- Location Badge -->
+            <div class="stagger-el location-badge mb-7 sm:mb-8">
+                <span class="loc-dot"></span>
+                Rajapalayam — Location Soon
+            </div>
+
+            <!-- Referral Section -->
+            <div class="stagger-el w-full pt-6 border-t border-gray-100 flex flex-col items-center">
+                
+                <h3 class="text-[22px] sm:text-[24px] font-black text-[#0f1a0d] mb-2 sm:mb-3 font-headingNew">
+                    Share with Friends
+                </h3>
+                
+                <p class="text-gray-500 text-[13.5px] sm:text-[14.5px] md:text-[15px] leading-relaxed mb-6 font-medium max-w-[360px]">
+                    Invite <span class="text-[#22c55e] font-bold">10 friends & family</span> in Rajapalayam to unlock an exclusive <span class="text-[#22c55e] font-bold">10% discount!</span>
+                </p>
+
+                <!-- WhatsApp Action -->
+                <button onclick="share()" class="whatsapp-btn">
+                    <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                    <span>Share on WhatsApp</span>
+                </button>
+            </div>
+
+            <!-- Skip to Website Link -->
+            <div class="stagger-el mt-6 sm:mt-7 w-full">
+                <a href="https://articmarket.com" class="text-slate-500 hover:text-slate-800 hover:underline text-[12.5px] sm:text-[13px] font-bold transition-all uppercase tracking-[0.06em] flex items-center justify-center gap-1.5">
+                    Skip to website
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
   </div>
 
   <script>
+    // =====================================================================
+    // CORE FIX: Execute immediately BEFORE browser paints to eliminate FOUC
+    // =====================================================================
+    const isAlreadyRegistered = localStorage.getItem('artic_registered') === 'true';
+    
+    if (isAlreadyRegistered) {
+        // Swap visibility classes synchronously
+        document.getElementById('page-cover').classList.replace('visible-page', 'hidden-page');
+        document.getElementById('page-already-registered').classList.replace('hidden-page', 'visible-page');
+        
+        // Immediately set the background filter to skip the dark intro cover state
+        const bgImg = document.getElementById('bg-image');
+        if (bgImg) {
+             bgImg.style.filter = 'brightness(1) contrast(1)';
+            bgImg.style.transform = 'scale(1.05)';
+        }
+    }
+
     // Form Input Interactions
     function handleInput(input, fcId, chkId) {
         const fc = document.getElementById(fcId);
@@ -778,44 +875,56 @@
     // Animations & State Setup
     window.addEventListener('DOMContentLoaded', () => {
 
-      /* ==================================================
-         1. COVER PAGE INTRO ANIMATION (From Paste 1)
-         ================================================== */
-      const tl = gsap.timeline();
+      if (isAlreadyRegistered) {
+          
+          // GSAP Setup to ensure starting state continuity
+          gsap.set('#bg-image', { filter: 'brightness(1) contrast(1)', scale: 1.05 });
 
-      // Background Initial
-      gsap.set('#bg-image', { scale: 1.35, filter: 'brightness(0.15) contrast(1.4)' });
-      // Cover UI Initials
-      gsap.set('.line-element', { y: "105%" });
-      gsap.set('.logo-anim', { opacity: 0, y: -150, scale: 0.75, rotate: -12 });
-      gsap.set('.logo-anim span', { opacity: 0, scale: 0.4 });
-      gsap.set('.hero-subtext', { opacity: 0, y: 30 });
-      gsap.set('.social-proof', { opacity: 1 });
-      gsap.set('.avatar', { opacity: 0, scale: 0, x: -25, rotate: -45 });
-      gsap.set('.highlighter-pill', { opacity: 0, scale: 0.2, y: 30, rotateX: 75, transformPerspective: 1000 });
-      gsap.set('.registered-label', { opacity: 0, x: 15 });
-      gsap.set('.cta-btn', { opacity: 0, scale: 0.85, y: 35 });
+          // Play Entrance Animations for "Already Registered" Card
+          const tl = gsap.timeline({ delay: 0.2 });
+          tl.to("#already-registered-card", { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "back.out(1.2)" })
+            .to(".stagger-el", { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" }, "-=0.4");
+          
+      } else {
 
-      // Play Intro
-      tl.to('.logo-anim', { opacity: 1, y: 0, scale: 1, rotate: 0, duration: 2.0, ease: 'expo.out' }, '+=0.1');
-      tl.to('.logo-anim span', { opacity: 1, scale: 1, duration: 1.4, ease: 'power4.out' }, '-=1.7');
-      tl.fromTo('.location-label', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.4, ease: 'power4.out' }, '-=1.2');
-      tl.to('.line-element', { y: "0%", duration: 1.9, stagger: 0.22, ease: 'expo.out' }, '-=1.2');
-      tl.to('.hero-subtext', { opacity: 1, y: 0, duration: 1.5, ease: 'power3.out' }, '-=1.4');
-      tl.addLabel('socialReveal', '-=1.2');
-      tl.to('.avatar', { opacity: 1, scale: 1, x: 0, rotate: 0, duration: 1.1, stagger: 0.12, ease: 'back.out(1.8)' }, 'socialReveal');
-      tl.to('.highlighter-pill', { opacity: 1, scale: 1, y: 0, rotateX: 0, duration: 1.3, ease: 'back.out(2.0)' }, 'socialReveal+=0.4');
-      tl.to('.registered-label', { opacity: 1, x: 0, duration: 1.3, ease: 'power4.out' }, 'socialReveal+=0.4');
-      
-      const countObj = { val: 0 };
-      tl.to(countObj, {
-        val: 2564, duration: 2.2, ease: "power3.out",
-        onUpdate: function() { document.getElementById('registered-count').innerText = Math.round(countObj.val).toLocaleString(); }
-      }, 'socialReveal+=0.4');
-      
-      tl.to('.cta-btn', { opacity: 1, scale: 1, y: 0, duration: 1.8, ease: 'back.out(1.4)' }, '-=1.3');
-      tl.to('#bg-image', { scale: 1.05, filter: 'brightness(1) contrast(1)', duration: 3.2, ease: 'power4.out' }, 0);
+          /* ==================================================
+             1. COVER PAGE INTRO ANIMATION (First time visitors)
+             ================================================== */
+          const tl = gsap.timeline();
 
+          // Background Initial
+          gsap.set('#bg-image', { scale: 1.35, filter: 'brightness(0.15) contrast(1.4)' });
+          // Cover UI Initials
+          gsap.set('.line-element', { y: "105%" });
+          gsap.set('.logo-anim', { opacity: 0, y: -150, scale: 0.75, rotate: -12 });
+          gsap.set('.logo-anim span', { opacity: 0, scale: 0.4 });
+          gsap.set('.hero-subtext', { opacity: 0, y: 30 });
+          gsap.set('.social-proof', { opacity: 1 });
+          gsap.set('.avatar', { opacity: 0, scale: 0, x: -25, rotate: -45 });
+          gsap.set('.highlighter-pill', { opacity: 0, scale: 0.2, y: 30, rotateX: 75, transformPerspective: 1000 });
+          gsap.set('.registered-label', { opacity: 0, x: 15 });
+          gsap.set('.cta-btn', { opacity: 0, scale: 0.85, y: 35 });
+
+          // Play Intro
+          tl.to('.logo-anim', { opacity: 1, y: 0, scale: 1, rotate: 0, duration: 2.0, ease: 'expo.out' }, '+=0.1');
+          tl.to('.logo-anim span', { opacity: 1, scale: 1, duration: 1.4, ease: 'power4.out' }, '-=1.7');
+          tl.fromTo('.location-label', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.4, ease: 'power4.out' }, '-=1.2');
+          tl.to('.line-element', { y: "0%", duration: 1.9, stagger: 0.22, ease: 'expo.out' }, '-=1.2');
+          tl.to('.hero-subtext', { opacity: 1, y: 0, duration: 1.5, ease: 'power3.out' }, '-=1.4');
+          tl.addLabel('socialReveal', '-=1.2');
+          tl.to('.avatar', { opacity: 1, scale: 1, x: 0, rotate: 0, duration: 1.1, stagger: 0.12, ease: 'back.out(1.8)' }, 'socialReveal');
+          tl.to('.highlighter-pill', { opacity: 1, scale: 1, y: 0, rotateX: 0, duration: 1.3, ease: 'back.out(2.0)' }, 'socialReveal+=0.4');
+          tl.to('.registered-label', { opacity: 1, x: 0, duration: 1.3, ease: 'power4.out' }, 'socialReveal+=0.4');
+          
+          const countObj = { val: 0 };
+          tl.to(countObj, {
+            val: 2564, duration: 2.2, ease: "power3.out",
+            onUpdate: function() { document.getElementById('registered-count').innerText = Math.round(countObj.val).toLocaleString(); }
+          }, 'socialReveal+=0.4');
+          
+          tl.to('.cta-btn', { opacity: 1, scale: 1, y: 0, duration: 1.8, ease: 'back.out(1.4)' }, '-=1.3');
+          tl.to('#bg-image', { scale: 1.05, filter: 'brightness(1) contrast(1)', duration: 3.2, ease: 'power4.out' }, 0);
+      }
 
       /* ==================================================
          2. FORM & SUCCESS PAGES PRE-RENDER STATES
@@ -894,6 +1003,10 @@
        ================================================== */
     document.getElementById('regForm').addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Register that the user has completed the flow.
+        // This will persist in browser data, showing the "Already Registered" UI upon refresh/revisit.
+        localStorage.setItem('artic_registered', 'true');
 
         // Swap visibility
         document.getElementById('page-form').classList.replace('visible-page', 'hidden-page');
